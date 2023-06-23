@@ -11,12 +11,18 @@ public class Player : MonoBehaviour
     private float speedControl;
     [Header("AreaAction")]
     [SerializeField]
-    private BoxCollider2D areaAction;
+    private float marginX = 0; // Margem do eixo X da área de ação em relação às bordas da tela
+    [SerializeField]
+    private float marginY = 0; // Margem do eixo Y da área de ação em relação às bordas da tela
+    private Camera mainCamera;
+    private float minX, maxX, minY, maxY;
 
     // Start is called before the first frame update
     void Start()
     {
         speedControl = navePlayer.GetSpeedPoints();
+        mainCamera = Camera.main;
+        CalculateBounds();
     }
 
     // Update is called once per frame
@@ -28,19 +34,34 @@ public class Player : MonoBehaviour
 
     private void ActionArea()
     {
-        var minX = -areaAction.bounds.extents.x + areaAction.offset.x;
-        var maxX = areaAction.bounds.extents.x + areaAction.offset.x;
-
-        var minY = -areaAction.bounds.extents.y + areaAction.offset.y;
-        var maxY = areaAction.bounds.extents.y + areaAction.offset.y;
-        transform.position = new Vector2(Math.Clamp(transform.position.x,minX,maxX), Math.Clamp(transform.position.y, minY, maxY));
+        var clampedX = Mathf.Clamp(transform.position.x, minX, maxX);
+        var clampedY = Mathf.Clamp(transform.position.y, minY, maxY);
+        transform.position = new Vector2(clampedX, clampedY);
     }
-
     private void Move()
     {
         var side = Input.GetAxis("Horizontal");
         var up = Input.GetAxis("Vertical");
         var direction = new Vector2(side, up);
         transform.Translate(direction * speedControl*Time.deltaTime);
+    }
+    private void CalculateBounds()
+    {
+        if (mainCamera == null)
+        {
+            Debug.LogError("Main camera not found!");
+            return;
+        }
+
+        float cameraHeight = mainCamera.orthographicSize * 2f;
+        float cameraWidth = cameraHeight * mainCamera.aspect;
+
+        float marginOffsetX = cameraWidth * marginX;
+        float marginOffsetY = cameraHeight * marginY;
+
+        minX = mainCamera.transform.position.x - cameraWidth / 2f + marginOffsetX;
+        maxX = mainCamera.transform.position.x + cameraWidth / 2f - marginOffsetX;
+        minY = mainCamera.transform.position.y - cameraHeight / 2f + marginOffsetY;
+        maxY = mainCamera.transform.position.y + cameraHeight / 2f - marginOffsetY;
     }
 }
