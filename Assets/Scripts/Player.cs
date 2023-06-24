@@ -9,20 +9,23 @@ public class Player : MonoBehaviour
     private NavesModel navePlayer;
     [SerializeField]
     private float speedControl;
-    [Header("AreaAction")]
-    [SerializeField]
-    private float marginX = 0; // Margem do eixo X da área de ação em relação às bordas da tela
-    [SerializeField]
-    private float marginY = 0; // Margem do eixo Y da área de ação em relação às bordas da tela
-    private Camera mainCamera;
+    private CameraAreaAction mainCamera;
     private float minX, maxX, minY, maxY;
+    [Header("Shoot")]
+    [SerializeField]
+    private GameObject shotPrefab;
+    [SerializeField]
+    private Transform shootPivot;
 
     // Start is called before the first frame update
     void Start()
     {
+        mainCamera = GetComponent<CameraAreaAction>();
         speedControl = navePlayer.GetSpeedPoints();
-        mainCamera = Camera.main;
-        CalculateBounds();
+        minX = mainCamera.GetMinX();
+        maxX = mainCamera.GetMaxX();
+        minY = mainCamera.GetMinY();
+        maxY = mainCamera.GetMaxY();
     }
 
     // Update is called once per frame
@@ -30,10 +33,13 @@ public class Player : MonoBehaviour
     {
         Move();
         ActionArea();
+        Shoot();
+            
     }
 
     private void ActionArea()
     {
+        
         var clampedX = Mathf.Clamp(transform.position.x, minX, maxX);
         var clampedY = Mathf.Clamp(transform.position.y, minY, maxY);
         transform.position = new Vector2(clampedX, clampedY);
@@ -45,23 +51,12 @@ public class Player : MonoBehaviour
         var direction = new Vector2(side, up);
         transform.Translate(direction * speedControl*Time.deltaTime);
     }
-    private void CalculateBounds()
+    private void Shoot()
     {
-        if (mainCamera == null)
+        //Ao apertar Espace a Nave Atira
+        if (Input.GetButtonDown("Jump")) 
         {
-            Debug.LogError("Main camera not found!");
-            return;
+            Instantiate(shotPrefab, shootPivot.position, shootPivot.rotation);
         }
-
-        float cameraHeight = mainCamera.orthographicSize * 2f;
-        float cameraWidth = cameraHeight * mainCamera.aspect;
-
-        float marginOffsetX = cameraWidth * marginX;
-        float marginOffsetY = cameraHeight * marginY;
-
-        minX = mainCamera.transform.position.x - cameraWidth / 2f + marginOffsetX;
-        maxX = mainCamera.transform.position.x + cameraWidth / 2f - marginOffsetX;
-        minY = mainCamera.transform.position.y - cameraHeight / 2f + marginOffsetY;
-        maxY = mainCamera.transform.position.y + cameraHeight / 2f - marginOffsetY;
     }
 }

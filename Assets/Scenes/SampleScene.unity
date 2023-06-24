@@ -123,6 +123,54 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &176037176
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 176037178}
+  - component: {fileID: 176037177}
+  m_Layer: 0
+  m_Name: Spawner (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &176037177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176037176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01fd542f206430844bb4b853da7d1947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 2869019495054002158, guid: dca8f3008dca8ea439d6931cf7675ed3, type: 3}
+  initialDelay: 1
+  spawnDelay: 2
+  mainCamera: {fileID: 952121837}
+--- !u!4 &176037178
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176037176}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 5.81, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,13 +264,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 952121835}
+  - component: {fileID: 952121832}
+  - component: {fileID: 952121837}
   - component: {fileID: 952121834}
   - component: {fileID: 952121833}
-  - component: {fileID: 952121832}
   - component: {fileID: 952121836}
   m_Layer: 0
   m_Name: Triangle
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -241,8 +290,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navePlayer: {fileID: 11400000, guid: c047e926d6457b9408d0e48710c4ffbb, type: 2}
   speedControl: 0
-  marginX: 0.03
-  marginY: 0.05
+  shotPrefab: {fileID: 5725706587503135654, guid: 7b8dc3e7ad2dd354cb08d702366064f1, type: 3}
+  shootPivot: {fileID: 2002169632}
 --- !u!50 &952121833
 Rigidbody2D:
   serializedVersion: 4
@@ -327,7 +376,8 @@ Transform:
   m_LocalPosition: {x: -2.2925863, y: -1.5483494, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2002169632}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -359,6 +409,20 @@ PolygonCollider2D:
     - - {x: 0, y: 0.5773587}
       - {x: -0.5, y: -0.28866667}
       - {x: 0.5, y: -0.28866667}
+--- !u!114 &952121837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952121831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf24ca8047367443a843d7930829b23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  marginX: 0.03
+  marginY: 0.06
 --- !u!1 &1571607569
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,9 +470,35 @@ MonoBehaviour:
   enemyPrefab: {fileID: 2869019495054002158, guid: 23ddeb853550ec343a3f462d3fcf9e01, type: 3}
   initialDelay: 1
   spawnDelay: 2
-  rangeX:
-    min: -8.72
-    max: 8.72
-  rangeY:
-    min: 0
-    max: 0
+  mainCamera: {fileID: 952121837}
+--- !u!1 &2002169631
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2002169632}
+  m_Layer: 0
+  m_Name: ShootPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2002169632
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002169631}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.52, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 952121835}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
