@@ -5,8 +5,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Header("NavesAtributes")]
     [SerializeField]
     private NavesModel navePlayer;
+    [SerializeField]
+    private int lifeControl;
+    [SerializeField]
+    private int damageControl;
     [SerializeField]
     private float speedControl;
     private CameraAreaAction mainCamera;
@@ -20,8 +25,11 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         mainCamera = GetComponent<CameraAreaAction>();
+        lifeControl = navePlayer.GetLifePoints();
         speedControl = navePlayer.GetSpeedPoints();
+        damageControl = navePlayer.GetDamagePoints();
         minX = mainCamera.GetMinX();
         maxX = mainCamera.GetMaxX();
         minY = mainCamera.GetMinY();
@@ -58,5 +66,21 @@ public class Player : MonoBehaviour
         {
             Instantiate(shotPrefab, shootPivot.position, shootPivot.rotation);
         }
+    }
+    private void TakeDamage(int naveDamage)
+    {
+        lifeControl -= naveDamage;
+        if(lifeControl < 0)
+        {
+            GameManager.Instance.PlayerDied();
+        }
+        else
+        {
+            GameManager.Instance.LivesUpdate(lifeControl);
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        TakeDamage(collision.gameObject.GetComponent<Enemy>().GetEnemyModel().GetDamagePoints());
     }
 }

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance { get; private set; }
+    private bool isGameOver = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +17,13 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+    public void PlayerDied()
+    {
+        isGameOver = true;
+    }
+    public void LivesUpdate(int lives)
+    {
+        Debug.Log(lives);
     }
 }

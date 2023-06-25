@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMove : MonoBehaviour
+public class MoveType : MonoBehaviour
 {
     [SerializeField]
     private Vector2 direction;
@@ -21,8 +21,7 @@ public class EnemyMove : MonoBehaviour
     {
         if (isZigZag)
         {
-            zigZagCoroutine = StartCoroutine(MoveZigZag());
-            
+            zigZagCoroutine = StartCoroutine(MoveZigZag()); 
         }
     }
 
