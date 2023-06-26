@@ -10,13 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 3139063601262668915}
   - component: {fileID: 6998561461495114603}
-  - component: {fileID: -3433578745612824865}
+  - component: {fileID: -8594641561502832892}
   - component: {fileID: -5191413650667716570}
-  - component: {fileID: -8881875513286529035}
-  - component: {fileID: -4958504287640676237}
+  - component: {fileID: -1224638944166429763}
+  - component: {fileID: -9201860284686024653}
+  - component: {fileID: -6246548618124953918}
   m_Layer: 0
-  m_Name: ship_6
-  m_TagString: Untagged
+  m_Name: Inimigo 3
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,11 +77,11 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5994bffe79eae8d41885f71324095f88, type: 3}
+  m_SortingOrder: -2
+  m_Sprite: {fileID: 21300000, guid: 4edcf203dc1a47f48baa1d38dd9d6a62, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 0.48, y: 0.48}
   m_AdaptiveModeThreshold: 0.5
@@ -88,7 +89,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-3433578745612824865
+--- !u!114 &-8594641561502832892
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,6 +101,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fb284ab30f672541a6b07ac1c7c9488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyModel: {fileID: 11400000, guid: 5106efc7a3dca31408cd7c2b1236a17d, type: 2}
+  lifeControl: 0
+  speedControl: 0
+  damageControl: 0
+  explosionPrefab: {fileID: 7993452077385945086, guid: 5626c247716eeba4ba898e6518903d3f, type: 3}
 --- !u!114 &-5191413650667716570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,11 +118,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c1bcba8deee73e41b877fc84844fbaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 0, y: -1}
-  moveSpeed: 1
-  isZigZag: 0
-  zigzagTimer: 0
---- !u!50 &-8881875513286529035
+  direction: {x: 0, y: 0}
+  moveSpeed: 2
+  isZigZag: 1
+  zigzagTimer: 0.764
+--- !u!50 &-1224638944166429763
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -137,8 +143,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &-4958504287640676237
-BoxCollider2D:
+--- !u!60 &-9201860284686024653
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -154,12 +160,35 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.48, y: 0.48}
+    oldSize: {x: 0.96, y: 0.96}
     newSize: {x: 0.48, y: 0.48}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.48, y: 0.48}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.27193666, y: 0.21754934}
+      - {x: 0.10035566, y: 0.48}
+      - {x: -0.07826066, y: 0.48280635}
+      - {x: -0.13790497, y: 0.3975493}
+      - {x: -0.48, y: -0.10173934}
+      - {x: -0.48, y: -0.32}
+      - {x: -0.34, y: -0.48}
+      - {x: 0.34, y: -0.48}
+      - {x: 0.48, y: -0.29999998}
+      - {x: 0.48561263, y: -0.09893302}
+      - {x: 0.44316196, y: -0.04245067}
+--- !u!114 &-6246548618124953918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2869019495054002158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d8d751ba7f579f408459c4213b7f1a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyTime: 10

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-    [CreateAssetMenu(fileName = "Nave - ", menuName = "Inimigos", order =1)]
+    [CreateAssetMenu(fileName = "Nave - ", menuName = "NaveModelo", order =1)]
 public class NavesModel : ScriptableObject
 {
     [SerializeField]

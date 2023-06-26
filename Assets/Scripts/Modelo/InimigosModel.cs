@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Inimigo - ", menuName ="Naves", order = 2)]
+[CreateAssetMenu(fileName = "Inimigo - ", menuName ="Inimigos", order = 2)]
 public class InimigosModel : ScriptableObject
 {
     [SerializeField]
@@ -12,7 +12,7 @@ public class InimigosModel : ScriptableObject
     [SerializeField]
     private int damagePoints;
     [SerializeField]
-    private MonoBehaviour hability;
+    private int scoreValue;
     public int GetLifePoints()
     {
         return lifePoints;
@@ -25,9 +25,8 @@ public class InimigosModel : ScriptableObject
     {
         return damagePoints;
     }
-    public MonoBehaviour GetHability()
+    public int GetScoreValue()
     {
-        return hability;
+        return scoreValue;
     }
-
 }

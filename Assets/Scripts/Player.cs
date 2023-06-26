@@ -21,6 +21,9 @@ public class Player : MonoBehaviour
     private GameObject shotPrefab;
     [SerializeField]
     private Transform shootPivot;
+    [Header("ElementosGraficos")]
+    [SerializeField]
+    private GameObject explosionPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -70,6 +73,7 @@ public class Player : MonoBehaviour
     private void TakeDamage(int naveDamage)
     {
         lifeControl -= naveDamage;
+        // Se a vida for inferior a zero executara a funcao de Game Over
         if(lifeControl < 0)
         {
             GameManager.Instance.PlayerDied();
@@ -79,8 +83,21 @@ public class Player : MonoBehaviour
             GameManager.Instance.LivesUpdate(lifeControl);
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    //Verifica As Colisoes com o Jogador e Executa sua respectiva função
+    private void OnTriggerEnter2D(Collider2D enemyObjs)
     {
-        TakeDamage(collision.gameObject.GetComponent<Enemy>().GetEnemyModel().GetDamagePoints());
+        if (enemyObjs.CompareTag("BulletEnemy"))
+        {
+            TakeDamage(enemyObjs.GetComponent<Enemy>().GetEnemyModel().GetDamagePoints());
+        }
+        else if(enemyObjs.CompareTag("Enemy"))
+        {
+            TakeDamage(10);
+            Instantiate(explosionPrefab,enemyObjs.transform.position, enemyObjs.transform.rotation );
+            Destroy(enemyObjs.gameObject);
+            Instantiate(explosionPrefab, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
     }
 }

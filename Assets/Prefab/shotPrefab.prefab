@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5725706587503135649}
   - component: {fileID: 3388484135010817684}
   - component: {fileID: 3543782192281054616}
+  - component: {fileID: 2765769469943940339}
   m_Layer: 0
   m_Name: shotPrefab
   m_TagString: BulletPlayer
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 1603235538, guid: eed0d74ef9f952d43b61b1c3be9dd239, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -124,14 +125,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.07, y: 0.16}
+    oldSize: {x: 0.14, y: 0.32}
     newSize: {x: 0.07, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.07, y: 0.16}
+  m_Size: {x: 0.14, y: 0.32}
   m_EdgeRadius: 0
 --- !u!114 &3543782192281054616
 MonoBehaviour:
@@ -146,6 +147,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 1}
-  moveSpeed: 4
+  moveSpeed: 10
   isZigZag: 0
   zigzagTimer: 0
+--- !u!114 &2765769469943940339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5725706587503135654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d8d751ba7f579f408459c4213b7f1a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyTime: 3
