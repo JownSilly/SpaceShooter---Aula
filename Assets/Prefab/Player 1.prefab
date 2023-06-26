@@ -80,12 +80,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35d50485a848d0149b1aee6513a9b191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navePlayer: {fileID: 11400000, guid: c047e926d6457b9408d0e48710c4ffbb, type: 2}
+  navePlayer: {fileID: 11400000, guid: d290d450d604bc54da46a0419de24d3b, type: 2}
   lifeControl: 0
   damageControl: 0
   speedControl: 0
   shotPrefab: {fileID: 5725706587503135654, guid: 7b8dc3e7ad2dd354cb08d702366064f1, type: 3}
-  shootPivot: {fileID: 5852359394284034552}
+  shootPivot:
+  - {fileID: 5852359394284034552}
   explosionPrefab: {fileID: 7993452077385945086, guid: 5626c247716eeba4ba898e6518903d3f, type: 3}
 --- !u!114 &5852359395281653557
 MonoBehaviour:

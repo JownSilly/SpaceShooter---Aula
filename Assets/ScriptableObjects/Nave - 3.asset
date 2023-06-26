@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec10a9d6ec7aa4647971b59768204e08, type: 3}
   m_Name: Nave - 3
   m_EditorClassIdentifier: 
+  lifePoints: 5
+  speedPoints: 8
+  damagePoints: 5
+  hability: {fileID: 0}

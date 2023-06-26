@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e5dabbc1e766c24fb98b2e7794d8c6f, type: 3}
   m_Name: Inimigo - 1
   m_EditorClassIdentifier: 
-  lifePoints: 2
+  lifePoints: 4
   speedPoints: 1
-  damagePoints: 2
-  hability: {fileID: 0}
+  damagePoints: 5
+  scoreValue: 150

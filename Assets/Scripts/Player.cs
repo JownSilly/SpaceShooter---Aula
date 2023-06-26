@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject shotPrefab;
     [SerializeField]
-    private Transform shootPivot;
+    private Transform[] shootPivot;
     [Header("ElementosGraficos")]
     [SerializeField]
     private GameObject explosionPrefab;
@@ -65,9 +65,13 @@ public class Player : MonoBehaviour
     private void Shoot()
     {
         //Ao apertar Espace a Nave Atira
-        if (Input.GetButtonDown("Jump")) 
+        if (Input.GetButtonDown("Jump") || Input.GetButtonDown("Fire1")) 
         {
-            Instantiate(shotPrefab, shootPivot.position, shootPivot.rotation);
+            for(int x = 0; x <= shootPivot.Length-1; x++)
+            {
+                Instantiate(shotPrefab, shootPivot[x].position, shootPivot[x].rotation);
+            }
+            
         }
     }
     private void TakeDamage(int naveDamage)
@@ -93,11 +97,15 @@ public class Player : MonoBehaviour
         }
         else if(enemyObjs.CompareTag("Enemy"))
         {
-            TakeDamage(10);
+            TakeDamage(1000);
             Instantiate(explosionPrefab,enemyObjs.transform.position, enemyObjs.transform.rotation );
             Destroy(enemyObjs.gameObject);
             Instantiate(explosionPrefab, transform.position, transform.rotation);
             Destroy(gameObject);
         }
+    }
+    public NavesModel GetNaveModel()
+    {
+        return navePlayer;
     }
 }

@@ -85,7 +85,8 @@ MonoBehaviour:
   damageControl: 0
   speedControl: 0
   shotPrefab: {fileID: 5725706587503135654, guid: 7b8dc3e7ad2dd354cb08d702366064f1, type: 3}
-  shootPivot: {fileID: 5852359394284034552}
+  shootPivot:
+  - {fileID: 5852359394284034552}
   explosionPrefab: {fileID: 7993452077385945086, guid: 5626c247716eeba4ba898e6518903d3f, type: 3}
 --- !u!114 &5852359395281653557
 MonoBehaviour:

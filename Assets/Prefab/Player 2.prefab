@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &624046427583934367
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4102164218971603108}
+  m_Layer: 0
+  m_Name: ShootPivot (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4102164218971603108
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624046427583934367}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.398, y: -0.015, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5852359395281653555}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5586851346734194097
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5418528563929394800}
+  m_Layer: 0
+  m_Name: ShootPivot (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5418528563929394800
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5586851346734194097}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.398, y: -0.015, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5852359395281653555}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5852359394284034503
 GameObject:
   m_ObjectHideFlags: 0
@@ -24,7 +86,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5852359394284034503}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.181, z: 0}
+  m_LocalPosition: {x: 0.125, y: 0.395, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -65,6 +127,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5852359394284034552}
+  - {fileID: 8120984980763903168}
+  - {fileID: 5418528563929394800}
+  - {fileID: 4102164218971603108}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -80,12 +145,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35d50485a848d0149b1aee6513a9b191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  navePlayer: {fileID: 11400000, guid: c047e926d6457b9408d0e48710c4ffbb, type: 2}
+  navePlayer: {fileID: 11400000, guid: b933cdf9fe9e02b46b8970011432f229, type: 2}
   lifeControl: 0
   damageControl: 0
   speedControl: 0
   shotPrefab: {fileID: 5725706587503135654, guid: 7b8dc3e7ad2dd354cb08d702366064f1, type: 3}
-  shootPivot: {fileID: 5852359394284034552}
+  shootPivot:
+  - {fileID: 5852359394284034552}
+  - {fileID: 8120984980763903168}
+  - {fileID: 5418528563929394800}
+  - {fileID: 4102164218971603108}
   explosionPrefab: {fileID: 7993452077385945086, guid: 5626c247716eeba4ba898e6518903d3f, type: 3}
 --- !u!114 &5852359395281653557
 MonoBehaviour:
@@ -215,3 +284,34 @@ PolygonCollider2D:
       - {x: 0.45099515, y: 0.020226121}
       - {x: 0.2901016, y: -0.12144302}
       - {x: 0.1669344, y: 0.43411273}
+--- !u!1 &7575962773612297871
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8120984980763903168}
+  m_Layer: 0
+  m_Name: ShootPivot (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8120984980763903168
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7575962773612297871}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.125, y: 0.395, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5852359395281653555}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

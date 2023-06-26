@@ -17,9 +17,12 @@ public class Enemy : MonoBehaviour
     [Header("Prefabs")]
     [SerializeField]
     private GameObject explosionPrefab;
+    [Header("OtherScripts")]
+    private Player playerScript;
     // Start is called before the first frame update
     void Start()
     {
+        playerScript = FindObjectOfType<Player>();
         lifeControl = enemyModel.GetLifePoints();
         speedControl = enemyModel.GetSpeedPoints();
         damageControl = enemyModel.GetDamagePoints();
@@ -39,7 +42,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.CompareTag("BulletPlayer"))
         {
-            lifeControl--;
+            lifeControl -= playerScript.GetNaveModel().GetDamagePoints();
             if (lifeControl <= 0)
             {
                 Instantiate(explosionPrefab, transform.position, transform.rotation);
